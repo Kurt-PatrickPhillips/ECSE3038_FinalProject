@@ -23,23 +23,17 @@ app.config["MONGO_URI"] = mongo_uri
 cors = CORS(app)
 mongo = PyMongo(app)
 
-# Initialize some of the record data
-pos = 100
-id = "aa:aa:aa:aa:aa"
-
-
-class RecordSchema(Schema):
-    patient_id = fields.String(required=True)
-    position = fields.Integer(required=True)
-    temperature = fields.Integer(required=True)
-    last_updated = fields.String(required=True)
-
-
 class PatientSchema(Schema):
     first_name = fields.String(required=True)
     last_name = fields.String(required=True)
     age = fields.Integer(required=True)
     patient_id = fields.String(required=True)
+    
+class RecordSchema(Schema):
+    patient_id = fields.String(required=True)
+    position = fields.Integer(required=True)
+    temperature = fields.Integer(required=True)
+    last_updated = fields.String(required=True)
 
 
 @app.route("/api/patient", methods=["GET"])
